@@ -1,4 +1,6 @@
 const ImageModel = require("../models/Image");
+const { uploadFile } = require("../middlewares/s3")
+
 
 exports.handlePost = async (req, res) => {
     const file = req.file;
@@ -10,6 +12,7 @@ exports.handlePost = async (req, res) => {
     })
     await image.save();
 
+    // const result = await uploadFile(file);
     res.send("Image saved");
 
 }
