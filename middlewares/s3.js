@@ -13,18 +13,3 @@ const s3 = new S3({
 })
 
 module.exports = s3;
-
-//upload a file to s3
-// exports.uploadFile = (file) => {
-//         const fileStream = fs.createReadStream(file.path);
-
-//         const uploadParams = {
-//             Bucket: bucketName,
-//             Body: fileStream,
-//             Key: file.filename
-//         }
-//         s3.getObject
-//         return  s3.upload(uploadParams).promise();    
-// }
-
-//download a file froms s3

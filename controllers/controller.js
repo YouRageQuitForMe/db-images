@@ -12,7 +12,6 @@ exports.handlePost = async (req, res) => {
     })
     await image.save();
 
-    // const result = await uploadFile(file);
     res.send("Image saved");
 
 }
