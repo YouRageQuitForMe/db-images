@@ -1,5 +1,5 @@
 const ImageModel = require("../models/Image");
-const { uploadFile } = require("../middlewares/s3")
+const s3 = require("../middlewares/s3")
 
 
 exports.handlePost = async (req, res) => {
@@ -14,4 +14,13 @@ exports.handlePost = async (req, res) => {
 
     res.send("Image saved");
 
+}
+
+exports.handleGet = async (req, res) => {
+    const options = {
+        Bucket: process.env.AWS_NAME,
+        Key: req.params.key
+    }
+    const fileStream = s3.getObject(options).createReadStream();
+    fileStream.pipe(res);
 }

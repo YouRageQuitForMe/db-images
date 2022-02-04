@@ -10,22 +10,9 @@ const upload = multer({
       cb(null, {fieldName: file.fieldname});
     },
     key: function (req, file, cb) {
-      cb(null, Date.now().toString())
+      cb(null, `${Date.now().toString()}-${file.originalname}-${file.fieldname}-${Math.round(Math.random()*10E9)}`)
     }
   })
 })
 
 module.exports = upload;
-
-
-// const storage = multer.diskStorage({
-//     destination: function (req, file, cb) {
-//       cb(null, 'uploads')
-//     },
-//     filename: function (req, file, cb) {
-//       const uniqueSuffix = Math.round(Math.random() * 10000)
-//       cb(null, file.originalname + '-' + uniqueSuffix)
-//     }
-//   })
-
-// module.exports = multer({ storage: storage });
